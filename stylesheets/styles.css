@@ -846,14 +846,12 @@ article li {
 .project-title {
     font-size: 18px;
     line-height: 1.8;
-    width: 50px;
 }
 .project-sub-title {
     line-height: 1.8;
 }
 .item-content {
     line-height: 1.8;
-    padding: 4px;
 }
 #header nav li a {
     color: white;
