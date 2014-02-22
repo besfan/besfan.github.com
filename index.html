@@ -38,7 +38,57 @@
 
     </div>
     <article style="padding:10px 0px;">
-        <div class="item_article">ddddddd</div>
+        <div class="item_article">
+            <table style="width:100%">
+                <tbody>
+                <tr>
+                    <td class="item-title">求职意向：</td>
+                    <td class="item-content">Web工程师</td>
+                    <td class="item-content"></td>
+                    <td class="item-content"></td>
+                </tr>
+                <tr>
+                    <td class="item-title">姓名：</td>
+                    <td class="item-content">范孝鹏</td>
+                    <td class="item-title">性别：</td>
+                    <td class="item-content">男</td>
+                </tr>
+                <tr>
+                    <td class="item-title">出生日期：</td>
+                    <td class="item-content">1990年5月</td>
+                    <td class="item-title">籍贯：</td>
+                    <td class="item-content">江苏省徐州市</td>
+                </tr>
+                <tr>
+                    <td class="item-title">学校：</td>
+                    <td class="item-content">中国矿业大学</td>
+                    <td class="item-title">专业：</td>
+                    <td class="item-content">信息安全</td>
+                </tr>
+                <tr>
+                    <td class="item-title">学历：</td>
+                    <td class="item-content">本科</td>
+                    <td class="item-title">毕业时间：</td>
+                    <td class="item-content">2012年6月</td>
+                </tr>
+                <tr>
+                    <td class="item-title">移动电话：</td>
+                    <td class="item-content">18248783750</td>
+                    <td class="item-title">电子邮箱：</td>
+                    <td class="item-content">
+                        <a title="给我发邮件" href="mailto:fanxiaopeng515@163.com">fanxiaopeng515@163.com</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="item-title">博客:</td>
+                    <td colspan="3" class="item-content">
+                        <a target="_blank" href="http://www.cnblogs.com/fanxiaopeng/" title="看看我的博客">http://www.cnblogs.com/fanxiaopeng/</a>
+                        </br><a target="_blank" href="http://www.cnblogs.com/fanxiaopeng/" title="看看我的博客">http://www.cnblogs.com/fanxiaopeng/</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </article>
     <div>
         <div class="item_character"><h2>
@@ -48,7 +98,17 @@
 
     </div>
     <article style="padding:10px 0px;">
-        <div class="item_article">ddddddd</div>
+        <div class="item_article"><ul>
+            <li>熟悉ruby脚本语言以及rails框架。</li>
+            <li>熟悉javascript和jQuery。</li>
+            <li>熟练使用jQuery及Ajax开发</li>
+            <li>熟悉HTTP协议基本知识</li>
+            <li>熟悉图形脚本语言Sikuli。</li>
+            <li>熟悉C++编程语言。</li>
+            <li>了解html+CSS。</li>
+            <li>了解Linux常用命令、操作。</li>
+            <li>了解powershell脚本。</li>
+        </ul></div>
     </article>
     <div>
         <div class="item_character"><h2>
@@ -70,7 +130,11 @@
     <article style="padding:10px 0px;">
         <div class="item_article">ddddddd</div>
     </article>
-
+    <div class="return_top" title="嗖的就上去了！">
+        <span class="s"></span>
+        <span class="b"></span>
+        返回顶部
+    </div>
 </div>
 <!--[if !IE]>
 <script>fixScale(document);</script><![endif]-->
@@ -96,10 +160,39 @@
                 $item_article.slideUp(300);
                 $pic_arrow.attr("class", "arrow_hide")
             }, function () {
-               // $item_character.css("background", "#1c1c1c");
+                // $item_character.css("background", "#1c1c1c");
                 $item_article.slideDown(300);
                 $pic_arrow.attr("class", "arrow_show")
             });
+        });
+
+        $(window).bind("scroll", function () {
+
+            // 获取网页文档对象滚动条的垂直偏移
+            var scrollTopNum = $(document).scrollTop(),
+            // 获取浏览器当前窗口的高度
+                    winHeight = $(window).height(),
+                    return_top = $("div.return_top");
+
+            // 滚动条的垂直偏移大于 0 时显示，反之隐藏
+            (scrollTopNum > 0) ? return_top.fadeIn("fast") : return_top.fadeOut("fast");
+
+            // 给 IE6 定位
+            if (!-[1, ] && !window.XMLHttpRequest) {
+                return_top.css("top", scrollTopNum + winHeight - 200);
+            }
+
+        });
+        $("div.return_top").hover(
+                function () {
+                    $(this).addClass("return_top_hover");
+                },
+                function () {
+                    $(this).removeClass("return_top_hover");
+                });
+        // 点击按钮后，滚动条的垂直方向的值逐渐变为0，也就是滑动向上的效果
+        $("div.return_top").click(function () {
+            $("html, body").animate({ scrollTop: 0 }, 100);
         });
     });
 </script>
