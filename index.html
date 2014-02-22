@@ -6,7 +6,7 @@
     <title>Fan Xiaopeng Resume</title>
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/jquery.min.js"></script>
     <script src="javascripts/respond.js"></script>
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -34,6 +34,7 @@
             <span class="txt">个人介绍</span>
             <span class="arrow_show"></span>
         </h2></div>
+
 
     </div>
     <article style="padding:10px 0px;">
@@ -76,18 +77,26 @@
 </body>
 <script type="text/javascript">
     $(document).ready(function () {
-        var aMenuOneLi = $(".item_character");
-        var aMenuTwo = $(".item_article");
-        aMenuOneLi.each(function (i) {
+        var $aMenuOneLi = $(".item_character");
+        var $aMenuTwo = $(".item_article");
+        $aMenuOneLi.hover(
+                function () {
+                    $(this).addClass("item_character_hover");
+                },
+                function () {
+                    $(this).removeClass("item_character_hover");
+                }
+        );
+        $aMenuOneLi.each(function (i) {
             var $item_character = $(this);
             var $pic_arrow = $item_character.find("span:last-child");
-            var $item_article = $(aMenuTwo[i]);
+            var $item_article = $($aMenuTwo[i]);
             $(this).toggle(function () {
-                $item_character.css("background", "#252525");
+                //$item_character.css("background", "#252525");
                 $item_article.slideUp(300);
                 $pic_arrow.attr("class", "arrow_hide")
             }, function () {
-                $item_character.css("background", "#1c1c1c");
+               // $item_character.css("background", "#1c1c1c");
                 $item_article.slideDown(300);
                 $pic_arrow.attr("class", "arrow_show")
             });

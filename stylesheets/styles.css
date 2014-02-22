@@ -740,7 +740,14 @@ dt {
     width:720px;
     color: #B6B6B6;
     line-height: 24px;
+    cursor: pointer;
 }
+.item_character_hover {
+    background-color: #666666;
+}
+.item_character:hover {color: #FF0000;}
+.item_character > span {display: block;}
+.item_character .txt {float: left; color: #fff;}
 .arrow_show {
     float: right;
     width: 35px;
