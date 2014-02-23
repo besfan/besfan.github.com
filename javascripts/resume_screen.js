@@ -52,7 +52,7 @@ resume_fw.apps.init_resume_screen = function () {
                 });
             // 点击按钮后，滚动条的垂直方向的值逐渐变为0，也就是滑动向上的效果
             $("div.return_top").click(function () {
-                $("html, body").animate({ scrollTop: 0 }, 100);
+                $("html, body").animate({ scrollTop: 0 }, 500);
             });
         }
     }
