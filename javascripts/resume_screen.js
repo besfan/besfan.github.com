@@ -16,7 +16,6 @@ resume_fw.apps.init_resume_screen = function () {
                 var $pic_arrow = $item_character.find("span:last-child");
                 var $item_article = $($aMenuTwo[i]);
                 $(this).toggle(function () {
-                    //$item_character.css("background", "#252525");
                     $item_article.slideUp(300);
                     $pic_arrow.attr("class", "arrow_hide")
                 }, function () {

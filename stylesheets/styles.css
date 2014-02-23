@@ -939,7 +939,6 @@ section #title .credits.right {
     height: 40px;
     border: 1px solid #1c1c1c;
     border-radius: 4px;
-    background: #fff;
     box-shadow: 0 0 5px #F5F5F5;
     text-indent: -9999px;
     cursor: pointer;
@@ -953,7 +952,6 @@ section #title .credits.right {
 .return_top .s {
     position: absolute;
     top: -2px;
-    _top: -20px;
     left: 10px;
     width: 0;
     height: 0;
