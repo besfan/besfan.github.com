@@ -1,4 +1,10 @@
-<h1>Say#hello</h1>
-<p>Find me in app/views/say/hello.html.erb</p>
 <h1>Hello World!</h1>
-<%= 'It is now ' + Time.now.to_s %>
+
+<p><%= 'It is now ' + @time %></p>
+Say <a href="/say/goodbye">Goodbye!</a>
+<br>
+<p><%= link_to "Goodbye!",say_goodbye_path  %>  </p>
+
+<%= 1.hour.from_now %>  <br>
+<%= 1.from_now %>  <br>
+<%= 1.hour %>
