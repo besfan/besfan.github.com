@@ -1,0 +1,35 @@
+<div id="wrapper_inner">
+  <div class="container_12">
+    <% unless notice.blank? %>
+        <p id="notice"><%= notice %></p>
+    <% end %>
+
+    <div class="article_title">
+      <%= @post.title %>
+    </div>
+    <div class="article_author">
+      <%= @post.author %> created at <%= @post.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
+    </div>
+    <div class="article_body">
+      <p class="show_picture">
+        <%= image_tag @post.picture_url unless @post.picture_url.blank? %>
+      </p>
+      <%= sanitize @post.body %>
+    </div>
+    <div class="article_body">
+      <%= link_to 'Edit', edit_post_path(@post) %> |
+      <%= link_to 'Back To List', posts_path %>
+    </div>
+    <div class="article_body">
+      <div class="feedback_area_title">Comments List</div>
+      <% @post.comments.each_with_index do |comment, index| %>
+          <div class="comment_body">
+            <%= "##{index+1} " %><%= comment.created_at.strftime('%Y-%m-%d %H:%M:%S') %> <%= comment.commenter %>
+            <br>
+            <%= comment.body %>
+          </div>
+      <% end %>
+      <%= render "comment_form" %>
+    </div>
+  </div>
+</div>

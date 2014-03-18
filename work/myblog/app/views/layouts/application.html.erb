@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html crossriderapp2258="true">
+<head>
+  <title>Myblog</title>
+  <%= stylesheet_link_tag "/stylesheets/style.css" %>
+  <%= javascript_include_tag :all %>
+  <%= csrf_meta_tag %>
+</head>
+<body class="home blog">
+<header>
+  <div id="light">
+    <div class="container_16">
+      <h1 class="grid_8"><a href="#">Grey</a></h1>
+      <nav class="grid_8">
+        <%= render "/admin/category" %>
+      </nav>
+    </div>
+  </div>
+</header>
+
+
+<%= yield %>
+<!-- footer -->
+<footer>
+  <section id="footer_content">
+    <div class="container_12">
+      <div id="inspiration" class="grid_4">
+        <h4>Find Inspiration</h4>
+
+        <a href="#"><%= image_tag "7325332956_178b16f0b2_s.jpg" %></a>
+        <a href="#"><%= image_tag "7139484443_59ba355a67_s.jpg" %></a>
+        <a href="#"><%= image_tag "6991926526_bc2b9af686_s.jpg" %></a>
+        <a href="#"><%= image_tag "6991884950_a8a9d7c6ea_s.jpg" %></a>
+        <a href="#"><%= image_tag "6990048348_0202f723df_s.jpg" %></a>
+        <a href="#"><%= image_tag "7136013721_cbcca8c067_s.jpg" %></a>
+        <a href="#"><%= image_tag "7135992035_b42e018bef_s.jpg" %></a>
+        <a href="#"><%= image_tag "6937250572_8ab4f0a557_s.jpg" %></a>
+        <a href="#"><%= image_tag "6933739362_fcf621565a_s.jpg" %></a>
+      </div>
+      <div id="twitter_feed" class="grid_4">
+        <h4>Twitter Feed</h4>
+
+        <ul class="twitter_list">
+          <li><a href="#">@ognjanovic</a> dogovoreno :)</li>
+          <li><a href="#">@ognjanovic</a> a zasto ne bih?</li>
+          <li>enjoying delicious cup of <a href="#">@Nespresso</a> Indriya cc <a href="#">@ognjanovic</a>
+            <a href="#">@gonzodesign</a></li>
+          <li>Pijana noć <a href="#">#Kbs6luXM</a> via <a href="#">@ognjanovic</a></li>
+          <li>Sjajan tekst na juznim vestima - Vrelina <a href="#">#MEWI7znr</a> via <a href="#">@juznevesti</a></li>
+        </ul>
+        <p class="followme"><a href="#">follow me on twitter</a></p>
+      </div>
+      <div id="socials" class="grid_4">
+        <h4>Find me elsewhere</h4>
+
+        <ul class="socials">
+          <li><a href="#"><%= image_tag "feedburner_32.png" %></li>
+          <li><a href="#"><%= image_tag "twitter_32.png" %></li>
+          <li><a href="#"><%= image_tag "flickr_32.png" %></li>
+          <li><a href="#"><%= image_tag "deviantart_32.png" %></li>
+          <li><a href="#"><%= image_tag "facebook_32.png" %></li>
+          <li><a href="#"><%= image_tag "skype_32.png" %></li>
+
+        </ul>
+        <div class="clear"></div>
+
+        <h5>Stay Updated</h5>
+
+        <p class="stayupdated"><a href="#"><%= image_tag "rss_32.png" %></a> <a href="#">rss feed updates</a></p>
+
+        <p class="stayupdated"><a href="#"><%= image_tag "email_32.png" %></a> <a href="#">email updates</a></p>
+
+      </div>
+      <div class="clear"></div>
+    </div>
+  </section>
+  <section id="powered">
+    <div class="container_12">
+      <p class="grid_10">© 2012 free html5 templates | Collect from
+        <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
+
+      <p class="grid_2"><a class="top" href="#">▲ Back to top</a></p>
+    </div>
+  </section>
+</footer>
+</body>
+</html>

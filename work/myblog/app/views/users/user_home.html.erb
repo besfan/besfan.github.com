@@ -1,0 +1,91 @@
+<div id="wrapper">
+  <div class="container_16">
+    <section id="posts" class="prefix_1 grid_9">
+      <p>
+        <b>Name:</b>
+        <%= @user.name %>
+      </p>
+    </section>
+    <aside class="prefix_1 grid_5">
+      <!-- RSS / Twitter -->
+      <section id="user_information">
+        <p>
+          <a href=<%= compute_public_path("head_photo/#{@user.head_photo}", 'images') %>>
+            <%= image_tag "head_photo/#{@user.head_photo}" %></a>
+        </p>
+
+        <p id="user_name"><%= truncate(@user.name, :length => 10) %><br></p>
+        <span id="user_age"><%= @user.get_user_birthday %> years old</span>
+        <%= image_tag "#{@user.show_sex_icon}", {:class => "user_sex_icon"} %>
+
+        <p class="rss_sub_links">
+          <a href="#"><%= @user.city %></a> |
+          <span><%= sanitize(auto_link_email_addresses @user.email do truncate(@user.email,:length=>18) end) %></span>
+          </p>
+      </section>
+
+      <!-- search -->
+      <form action="#" method="get">
+        <input id="search" name="s" value="I'm searching for..." type="text">
+      </form>
+
+
+      <!-- Categories-->
+      <h4>Categories</h4>
+      <ul class="categories">
+        <li><a href="#">design</a></li>
+        <li><a href="#">inspiration</a></li>
+        <li><a href="#">tutorials</a></li>
+        <li><a href="#">uncategorized</a></li>
+        <li><a href="#">updates</a></li>
+        <li><a href="#">web</a></li>
+      </ul>
+      <div class="clear"></div>
+      <hr>
+
+
+      <!-- RSS / Twitter -->
+      <section id="rss">
+        <p><a href="#"><%= image_tag "rss_32.png" %></a></p>
+
+        <p><a href="#">SUBSCRIBE</a><br><strong>2021</strong> readers</p>
+
+        <p class="rss_sub_links"><a href="#">rss feed</a> | <a href="#">email updates</a></p>
+      </section>
+      <section id="twitter">
+        <p><a href="#"><%= image_tag "twitter_32.png" %></a></p>
+
+        <p><a href="#">FOLLOW ME</a><br><strong>4386</strong> followers</p>
+      </section>
+      <hr>
+
+
+      <!-- Comments -->
+      <h4>Recent Comments</h4>
+      <ul class="recent_comments">
+        <li>Perfekt style here too<br><a href="#">Timo</a></li>
+        <li>I like this Theme.
+          I think i will use it for my n...<br><a href="#">Timo</a></li>
+        <li>Good work. Think I'll use this for my blog.<br><a href="#">Tom Wayson</a></li>
+        <li>Beautiful themes.... i like it... :D<br><a href="#">Amri Karisma</a></li>
+        <li>Yes,
+          it works perfectly! :)<br><a href="#">Simone D'Amico</a></li>
+      </ul>
+      <div class="clear"></div>
+      <hr>
+
+      <!-- Blogroll -->
+      <h4>Blogroll</h4>
+      <ul class="blogroll">
+        <li><a href="#">Documentation</a></li>
+        <li><a href="#">Plugins</a></li>
+        <li><a href="#">Suggest Ideas</a></li>
+        <li><a href="#">Support Forum</a></li>
+        <li><a href="#">Themes</a></li>
+        <li><a href="#">WordPress Blog</a></li>
+        <li><a href="#">WordPress Planet</a></li>
+      </ul>
+      <hr>
+    </aside>
+  </div>
+</div>

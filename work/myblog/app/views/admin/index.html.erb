@@ -1,0 +1,28 @@
+<div id="wrapper_inner">
+  <div class="container_12">
+    <% if flash[:alert] %>
+        <p id="notice"><%= flash[:alert] %></p>
+    <% end %>
+    <h1>Login</h1>
+    <%= form_tag '/sessions/create', {:id => "login_form_id"} %>
+    <div>
+      <label for="name">Name:</label> <br>
+      <%= text_field_tag :name, params[:name] %>
+      <span id="name_error"></span>
+    </div>
+    <br>
+
+    <div><label for="password">Password:</label> <br>
+      <%= password_field_tag :password, params[:password] %>
+      <span id="password_error"></span>
+    </div>
+    <div>
+      <%= submit_tag "Login" %>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        blog_fw.app.login.init_login()
+    });
+</script>

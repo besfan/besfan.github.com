@@ -1,0 +1,11 @@
+<ul id="menu-menu" class="menu">
+  <li><a href=<%= root_url %>>Home</a></li>
+  <li><a href="#">About</a></li>
+  <% if session[:user_id] %>
+      <li><a href="/users/user_home"><%= truncate(get_session_user_name, :length => 8) %></a></li>
+      <li><a href="/sessions/destroy">Logout</a></li>
+  <% else %>
+      <li><a href="/admin/index">Login</a></li>
+      <li><a href="/users/new">Register</a></li>
+  <% end %>
+</ul>
