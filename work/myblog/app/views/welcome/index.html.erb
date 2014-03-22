@@ -1,27 +1,13 @@
 <!-- wrapper -->
 <div id="wrapper">
   <div class="container_16">
+
     <section id="posts" class="prefix_1 grid_9">
+      <% unless flash[:notice].blank? %>
+          <p id="notice"><%= flash[:notice] %></p>
+      <% end %>
       <% @posts.each do |post| %>
-          <article>
-            <h2><%= link_to "#{post.title}", post, {:class => "more-link"} %></h2>
-
-            <p class="info"><%= "#{post.get_article_time}" %> | by <span>
-              <a href="#" rel="author"><%= "#{post.author}" %></a></span> |
-              <a href="#" rel="category"><%= "#{post.topic}" %></a></p>
-
-            <div class="time"><p><%= "#{post.get_article_month}" %><br><span><%= "#{post.get_article_day}" %></span></p>
-            </div>
-            <p><%= image_tag post.picture_url unless post.picture_url.blank? %></p>
-
-            <div class="entry">
-              <p><%= sanitize truncate(post.body, :length => 200, :escape => false) %></p>
-
-              <p><%= link_to 'Read full story', post, {:class => "more-link"} %></p>
-            </div>
-            <div class="clear"></div>
-            <p class="bottom_info"><%= link_to "#{pluralize(post.comments.count, "Comment")} »", post %></p>
-          </article>
+            <%= render :partial => "/posts/each_post", :locals => { :post => post }%>
       <% end %>
 
       <article>

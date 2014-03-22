@@ -35,6 +35,52 @@ blog_fw.app.login = function () {
                 $("#login_form_id").find("#password_error").text("");
                 return true;
             }
+        },
+        init_user_index: function () {
+            var x = 10;
+            var y = 20;
+            $("a.tooltip")
+                .mouseover(function (e) {
+                    this.myTitle = this.title;
+                    this.title = "";
+                    var tooltip = "<div id='tooltip'>" + this.myTitle + "<\/div>"; //创建 div 元素
+                    $("body").append(tooltip);	//把它追加到文档中
+                    $("#tooltip").css({
+                        "top": (e.pageY + y) + "px",
+                        "left": (e.pageX + x) + "px"
+                    }).show("fast");	  //设置x坐标和y坐标，并且显示
+                })
+                .mouseout(function () {
+                    this.title = this.myTitle;
+                    $("#tooltip").remove();
+                }).mousemove(function (e) {
+                    $("#tooltip").css({
+                        "top": (e.pageY + y) + "px",
+                        "left": (e.pageX + x) + "px"
+                    });
+                });
+        },
+        init_post_show: function (jump_to) {
+            if (jump_to.length > 0) {
+                var comment_area_windowsY = $(".article_body .feedback_area_title")[0].offsetTop;
+                $("html, body").animate({ scrollTop: comment_area_windowsY }, 500);
+            }
+
+        },
+        init_post_edit: function () {
+            var oCKeditor = CKEDITOR.replace('post[body]');
+            oCKeditor.on('instanceReady', function (event) {
+                var editor = event.editor;
+                editor.resize(editor.container.getStyle('width'), 600);
+            }, null, null, 9999);
+        },
+        init_post_new:function(){
+            var oCKeditor = CKEDITOR.replace('post[body]');
+            oCKeditor.on('instanceReady', function (event) {
+                var editor = event.editor;
+                editor.resize(editor.container.getStyle('width'), 600);
+            }, null, null, 9999);
         }
+
     }
 }();

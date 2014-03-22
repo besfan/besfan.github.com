@@ -1,3 +1,4 @@
+<%= javascript_include_tag "ckeditor/ckeditor" %>
 <div id="wrapper_inner">
   <div class="container_12">
     <% unless notice.blank? %>
@@ -8,28 +9,41 @@
       <%= @post.title %>
     </div>
     <div class="article_author">
-      <%= @post.author %> created at <%= @post.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
+      <%= user_name_tag @post.author%>
+      created at <%= @post.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
     </div>
     <div class="article_body">
       <p class="show_picture">
         <%= image_tag @post.picture_url unless @post.picture_url.blank? %>
       </p>
+      <div class="show_detail_text">
       <%= sanitize @post.body %>
+      </div>
     </div>
     <div class="article_body">
-      <%= link_to 'Edit', edit_post_path(@post) %> |
-      <%= link_to 'Back To List', posts_path %>
+      <%= judge_show_edit_link_by_session @post %>
+      <%= link_to 'Back To List', "/users/user_home/#{@post.author}" %>
     </div>
     <div class="article_body">
       <div class="feedback_area_title">Comments List</div>
       <% @post.comments.each_with_index do |comment, index| %>
           <div class="comment_body">
-            <%= "##{index+1} " %><%= comment.created_at.strftime('%Y-%m-%d %H:%M:%S') %> <%= comment.commenter %>
+            <span class="comment_id"> <%= "##{index+1} " %></span><%= comment.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
+            <%= user_name_tag comment.commenter %></span>
             <br>
-            <%= comment.body %>
+            <div class="comment_text"><%= sanitize(comment.body) %></div>
+
           </div>
       <% end %>
       <%= render "comment_form" %>
     </div>
   </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        CKEDITOR.replace('comment[body]');
+        blog_fw.app.login.init_post_show("<%= params[:jump_to] %>");
+    });
+</script>
+

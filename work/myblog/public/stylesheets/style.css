@@ -33,7 +33,9 @@ body {
 }
 
 label {
-    font-size: 1.2em;
+    display:inline-block;
+    font-size: 1.8em;
+    width: 100px;
     margin: 5px 0;
 }
 
@@ -118,7 +120,7 @@ pre {
     display: block;
     padding: 10px 20px;
     border: 1px solid #ccc;
-    width: 480px;
+    /*width: 480px;*/
     margin: 20px 0;
 }
 
@@ -905,8 +907,25 @@ section#powered a:hover {
     margin: 20px 0 10px;
 }
 
+.comment_id {
+    color: green;
+}
+
+.comment_author a {
+    color: green;
+    text-decoration: none;
+}
+
 .comment_body {
     margin: 20px 0 10px;
+}
+
+.comment_text {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-bottom: 10px;
+    width: 800;
+    background: beige;
 }
 
 .blog_link {
@@ -1003,6 +1022,7 @@ section #user_name {
     font-size: 2em;
     color: red;
 }
+
 section #user_age {
     font-size: 1.5em;
     color: red;
@@ -1015,14 +1035,44 @@ section#user_information p.rss_sub_links {
 section#user_information p.rss_sub_links a {
     font-weight: normal;
 }
+
 section #user_email {
     width: 5px;
-    height:150px;
+    height: 150px;
     border: 1px solid #666;
-    overflow :hidden ;
-    text-overflow:ellipsis;
-    white-space:nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
+
+#tooltip {
+    position: absolute;
+    border: 1px solid #333;
+    background: #f7f5d1;
+    padding: 1px;
+    color: #333;
+    display: none;
+}
+
+.edit_and_destroy {
+    float: right;
+    text-align: right;
+}
+
+.post_edit_text {
+    height: 600px;
+}
+
+.show_detail_text {
+    background-color: lightyellow;
+    padding: 5px 5px 20px 5px;
+}
+
+.show_detail_text pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
 
 
 

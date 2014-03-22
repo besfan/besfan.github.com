@@ -1,0 +1,24 @@
+<article>
+  <h2><%= link_to "#{post.title}", post, {:class => "more-link"} %></h2>
+
+  <p class="info"><%= "#{post.get_article_time}" %> | by <span>
+               <%= link_to post.author, "/users/user_home/#{post.author}" %>
+  </span> |
+    <a href="#" rel="category"><%= "#{post.topic}" %></a>
+    <span class="edit_and_destroy">
+      <%= judge_edit_destroy_link_by_session(post) %>
+    </span>
+  </p>
+
+  <div class="time"><p><%= "#{post.get_article_month}" %><br><span><%= "#{post.get_article_day}" %></span></p>
+  </div>
+  <p><%= image_tag post.picture_url unless post.picture_url.blank? %></p>
+
+  <div class="entry">
+    <p><%= sanitize truncate(post.body, :length => 200, :escape => false) %></p>
+
+    <p><%= link_to 'Read full story', post, {:class => "more-link"} %></p>
+  </div>
+  <div class="clear"></div>
+  <p class="bottom_info"><%= link_to "#{pluralize(post.comments.count, "Comment")} »", post_path(post, :jump_to => "feedback_area_title") %></p>
+</article>

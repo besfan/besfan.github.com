@@ -8,8 +8,9 @@ Myblog::Application.routes.draw do
   get "sessions/destroy"
 
   get "users/user_home"
-  #resources :users
 
+  match 'users/user_home/:user_name' => 'users#user_home'
+  resources :users
   resources :posts do
     resources :comments
   end

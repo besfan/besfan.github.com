@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_filter :check_user_permission, :only => [:new,:create,:update,:edit,:destroy]
   # GET /posts
   # GET /posts.xml
   def index
@@ -14,7 +15,6 @@ class PostsController < ApplicationController
   # GET /posts/1.xml
   def show
     @post = Post.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @post }
@@ -41,15 +41,14 @@ class PostsController < ApplicationController
   # POST /posts.xml
   def create
     @post = Post.new(params[:post])
-
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to(@post, :notice => 'Post was successfully created.') }
-        format.xml  { render :xml => @post, :status => :created, :location => @post }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @post.errors, :status => :unprocessable_entity }
-      end
+      respond_to do |format|
+        if @post.save
+          format.html { redirect_to(@post, :notice => 'Post was successfully created.') }
+          format.xml  { render :xml => @post, :status => :created, :location => @post }
+        else
+          format.html { render :action => "new" }
+          format.xml  { render :xml => @post.errors, :status => :unprocessable_entity }
+        end
     end
   end
 
@@ -74,9 +73,8 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-
     respond_to do |format|
-      format.html { redirect_to(posts_url) }
+      format.html { redirect_to("/users/user_home/#{@post.author}",:notice=>"<br>Delete successfully!") }
       format.xml  { head :ok }
     end
   end

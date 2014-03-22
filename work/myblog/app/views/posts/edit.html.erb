@@ -1,7 +1,14 @@
+
 <div class="container_12">
   <h1>Editing post</h1>
 
   <%= render 'form' %>
-  <%= link_to 'Show', @post, :class => "blog_link" %> |
-  <%= link_to 'Back', posts_path, :class => "blog_link"  %>
+  <%= link_to 'Show', @post, :class => "blog_link" %>
+  <%= link_to 'Back', posts_path, :class => "blog_link" %>
 </div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        blog_fw.app.login.init_post_edit();
+    });
+</script>
+

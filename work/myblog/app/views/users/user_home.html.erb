@@ -1,10 +1,12 @@
 <div id="wrapper">
   <div class="container_16">
     <section id="posts" class="prefix_1 grid_9">
-      <p>
-        <b>Name:</b>
-        <%= @user.name %>
-      </p>
+      <% if @message.present? || notice  %>
+          <p id="notice"><%= @message.to_s + notice.to_s %></p>
+      <% end %>
+      <% @user_posts.each do |post| %>
+          <%= render :partial => "/posts/each_post", :locals => {:post => post} %>
+      <% end %>
     </section>
     <aside class="prefix_1 grid_5">
       <!-- RSS / Twitter -->
@@ -14,22 +16,27 @@
             <%= image_tag "head_photo/#{@user.head_photo}" %></a>
         </p>
 
-        <p id="user_name"><%= truncate(@user.name, :length => 10) %><br></p>
+        <p id="user_name"><%= truncate(@user.name, :length => 15) %><br></p>
         <span id="user_age"><%= @user.get_user_birthday %> years old</span>
         <%= image_tag "#{@user.show_sex_icon}", {:class => "user_sex_icon"} %>
 
         <p class="rss_sub_links">
+          <%= @user.city %> |
+          <span><%= sanitize(auto_link_email_addresses @user.email, {:title => @user.email} do
+            "Email"
+          end) %></span>
+        </p>
+        <p class="rss_sub_links">
           <a href="#"><%= @user.city %></a> |
-          <span><%= sanitize(auto_link_email_addresses @user.email do truncate(@user.email,:length=>18) end) %></span>
-          </p>
+          <span><%= sanitize(auto_link_email_addresses @user.email, {:title => @user.email} do
+            "Email"
+          end) %></span>
+        </p>
       </section>
-
       <!-- search -->
       <form action="#" method="get">
         <input id="search" name="s" value="I'm searching for..." type="text">
       </form>
-
-
       <!-- Categories-->
       <h4>Categories</h4>
       <ul class="categories">
@@ -42,7 +49,6 @@
       </ul>
       <div class="clear"></div>
       <hr>
-
 
       <!-- RSS / Twitter -->
       <section id="rss">
@@ -58,8 +64,6 @@
         <p><a href="#">FOLLOW ME</a><br><strong>4386</strong> followers</p>
       </section>
       <hr>
-
-
       <!-- Comments -->
       <h4>Recent Comments</h4>
       <ul class="recent_comments">
@@ -73,7 +77,6 @@
       </ul>
       <div class="clear"></div>
       <hr>
-
       <!-- Blogroll -->
       <h4>Blogroll</h4>
       <ul class="blogroll">
@@ -89,3 +92,8 @@
     </aside>
   </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        blog_fw.app.login.init_user_index();
+    });
+</script>

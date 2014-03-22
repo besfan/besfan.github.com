@@ -2207,7 +2207,7 @@ Element.Methods = {
   },
 
   readAttribute: function(element, name) {
-    element = $(element);
+    //element = $(element);
     if (Prototype.Browser.IE) {
       var t = Element._attributeTranslations.read;
       if (t.values[name]) return t.values[name](element, name);
@@ -2221,7 +2221,7 @@ Element.Methods = {
   },
 
   writeAttribute: function(element, name, value) {
-    element = $(element);
+    //element = $(element);
     var attributes = { }, t = Element._attributeTranslations.write;
 
     if (typeof name == 'object') attributes = name;
@@ -2937,7 +2937,7 @@ Element._insertionTranslations = {
     element.insertBefore(node, element.firstChild);
   },
   bottom: function(element, node) {
-    element.appendChild(node);
+    element[0].appendChild(node);
   },
   after: function(element, node) {
     element.parentNode.insertBefore(node, element.nextSibling);
