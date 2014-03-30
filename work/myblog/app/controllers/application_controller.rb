@@ -14,11 +14,6 @@ class ApplicationController < ActionController::Base
   end
 
   def head_photo_check
-    p '========================='
-    p params
-    p params[:user]
-    p params[:user][:head_photo]
-    p "========================="
     params[:user][:head_photo] = params[:user][:head_photo].nil? ?
         "1ddf772f4b3800b2627d6a7caa4d89bc.jpg" : params[:user][:head_photo]
   end
